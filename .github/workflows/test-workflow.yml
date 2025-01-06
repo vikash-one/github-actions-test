@@ -1,0 +1,35 @@
+name: Test Script Flow
+
+on:
+  # Trigger the workflow manually
+  workflow_dispatch:
+  # Optionally, run every day at midnight UTC
+  schedule:
+    - cron: "0 0 * * *"  # This will run daily at midnight UTC
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Using the latest Ubuntu runner provided by GitHub
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository's code
+
+      - name: Set up environment
+        run: |
+          # No specific setup for this simple test, but you can add it here if needed
+          echo "Setting up environment"
+
+      - name: Run Test Script
+        run: |
+          chmod +x test_script.sh  # Make sure the script is executable
+          ./test_script.sh  # Run the script
+
+      - name: Verify Test Results
+        run: |
+          if [ -f "test_file.txt" ]; then
+            echo "Test file created successfully."
+          else
+            echo "Test file creation failed."
+            exit 1
+          fi
