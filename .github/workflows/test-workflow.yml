@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Using the latest Ubuntu runner provided by GitHub
+    runs-on: ubuntu-24.04  # Using the latest Ubuntu runner provided by GitHub
 
     steps:
       - name: Checkout code
